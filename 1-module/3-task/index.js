@@ -1,8 +1,5 @@
 function ucFirst(str) {
-  if (str == '') {
-    return alert(str);
-  } else {
-    alert(str[0].toUpperCase() + str.slice(1));}
-}
+  if (!str) return str;
 
-ucFirst(prompt('Введите имя пользователя...', ''));
+  return str[0].toUpperCase() + str.slice(1);
+}
