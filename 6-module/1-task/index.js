@@ -12,7 +12,47 @@
  *      }
  *
  */
+
 export default class UserTable {
-  constructor(rows) {
+    elem = null;
+  
+    rowsArr = null;
+  
+    constructor(rowsArr) {
+      this.rowsArr = rowsArr;
+      this.elem = document.createElement('table');
+      this.createTable();
+      this.removeRows();
+    }
+  
+    createTable() {
+      let table =`
+            <thead>
+              <tr>
+                  <th>Имя</th>
+                  <th>Возраст</th>
+                  <th>Зарплата</th>
+                  <th>Город</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+                ${this.rowsArr.map(arr =>
+                  `<tr>
+                      <td>${arr.name}</td>
+                      <td>${arr.age}</td>
+                      <td>${arr.salary}</td>
+                      <td>${arr.city}</td>
+                    <td><button>X</button></td>
+                  </tr>`).join('')}
+          </tbody>`
+  
+      this.elem.innerHTML = table;
+  }
+
+  removeRows() {
+    for (let button of this.elem.querySelectorAll("button"))
+      button.addEventListener('click', (event) =>
+      event.target.closest("tr").remove())
   }
 }
