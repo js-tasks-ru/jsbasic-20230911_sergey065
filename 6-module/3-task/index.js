@@ -13,7 +13,7 @@ export default class Carousel {
   }
 
   createCarousel() {
-  let carousel = createElement(`
+    this.elem = createElement(`
     <div class="carousel">
       
       <div class="carousel__arrow carousel__arrow_right">
@@ -41,8 +41,6 @@ export default class Carousel {
       </div>
     </div>
   `)
-
-  this.elem = carousel;
   }
 
   initCarousel() {

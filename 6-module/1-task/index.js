@@ -19,15 +19,15 @@ export default class UserTable {
     rowsArr = null;
   
     constructor(rowsArr) {
-      this.rowsArr = rowsArr;
+      this.rowsArr = rowsArr || this.rowsArr;
       this.elem = document.createElement('table');
       this.createTable();
       this.removeRows();
     }
   
     createTable() {
-      let table =`
-            <thead>
+      this.elem.innerHTML =`
+          <thead>
               <tr>
                   <th>Имя</th>
                   <th>Возраст</th>
@@ -43,11 +43,9 @@ export default class UserTable {
                       <td>${arr.age}</td>
                       <td>${arr.salary}</td>
                       <td>${arr.city}</td>
-                    <td><button>X</button></td>
+                      <td><button>X</button></td>
                   </tr>`).join('')}
           </tbody>`
-  
-      this.elem.innerHTML = table;
   }
 
   removeRows() {
