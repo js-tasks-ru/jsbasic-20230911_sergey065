@@ -55,6 +55,7 @@ export default class StepSlider {
       this.value = Math.round(eventXPercent / stepLengthPercent);
 
       this.elem.querySelector(".slider__value").textContent = this.value;
+      this.elem.querySelector(".slider__step-active").classList.remove("slider__step-active");
       this.elem.querySelector(".slider__steps").children[this.value].classList.add("slider__step-active");
       this.elem.querySelector('.slider__thumb').style.left = this.value * stepLengthPercent + "%";
       this.elem.querySelector('.slider__progress').style.width = this.value * stepLengthPercent + "%";
