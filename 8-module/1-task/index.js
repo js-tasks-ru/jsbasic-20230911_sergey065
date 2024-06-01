@@ -1,6 +1,8 @@
 import createElement from '../../assets/lib/create-element.js';
 
 export default class CartIcon {
+  elemTop
+
   constructor() {
     this.render();
 
@@ -21,6 +23,8 @@ export default class CartIcon {
           <span class="cart-icon__price">€${cart.getTotalPrice().toFixed(2)}</span>
         </div>`;
 
+      this.elemTop = this.elem.getBoundingClientRect().top + window.scrollY;
+
       this.updatePosition();
 
       this.elem.classList.add('shake');
@@ -39,6 +43,42 @@ export default class CartIcon {
   }
 
   updatePosition() {
-    // ваш код ...
+
+    if(this.elem.offsetHeight) {
+
+      let leftIndent = Math.min(
+        document.querySelector('.container').getBoundingClientRect().right + 20,
+        document.documentElement.clientWidth - this.elem.offsetWidth - 10
+      ) + 'px';
+
+      if(window.scrollY > this.elemTop) {
+
+        Object.assign(this.elem.style, {
+          position: 'fixed',
+          top: '50px',
+          zIndex: 1e3,
+          right: '10px',
+          left: leftIndent
+        });
+        
+      } else {
+
+        Object.assign(this.elem.style, {
+          position: '',
+          top: '',
+          left: '',
+          zIndex: ''
+        });
+      }
+    }
+
+    if (document.documentElement.clientWidth <= 767) {
+        Object.assign(this.elem.style, {
+          position: '',
+          top: '',
+          left: '',
+          zIndex: ''
+        });
+      }
   }
 }
