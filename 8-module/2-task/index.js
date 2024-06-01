@@ -50,16 +50,15 @@ export default class ProductGrid {
     if (filters.vegeterianOnly) {
       this.products = this.products.filter(product => filters.vegeterianOnly == product.vegeterian)
     }
-
-    if (filters.vegeterianOnly) {
-      this.products = this.products.filter(product => filters.vegeterianOnly == product.vegeterian)
-    }
+    
     if (filters.maxSpiciness) {
       this.products = this.products.filter(product => filters.maxSpiciness >= product.spiciness)
     }
     if (filters.category) {
         this.products = this.products.filter(product => filters.category == product.category)
-    } */
+    } 
+    
+    */
   }
 
   updateFilter(filters) {
